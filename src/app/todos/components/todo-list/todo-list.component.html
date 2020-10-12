@@ -1,9 +1,46 @@
 <ul class="todo-list">
-  <li>
+  <li
+    [ngClass]="{
+      completed: todoElement.completed
+    }"
+    *ngFor="let todoElement of filteredTodos"
+  >
     <div class="view">
-      <input class="toggle" type="checkbox" />
-      <label></label>
-      <button class="destroy"></button>
+      <input
+        [ngClass]="{
+          'todo-completed': todoElement.completed
+        }"
+        (click)="markTodoAsCompleted(todoElement)"
+        class="toggle"
+        type="checkbox"
+        (change)="markTodoAsCompleted(todoElement)"
+      />
+      <label
+        (appClickOutside)="disableEditMode()"
+        #labelReference
+        (dblclick)="editTaskContent(todoElement, labelReference)"
+        [ngClass]="{
+          'is-editing': editedElementId === todoElement.id
+        }"
+        [attr.contenteditable]="editedElementId === todoElement.id ? 'true' : 'false'"
+        (keydown)="updateTaskContentOnEnter(todoElement, $event, labelReference)"
+        >{{ todoElement.text }}</label
+      >
+      <button (click)="removeTodoTask(todoElement)" class="destroy"></button>
     </div>
   </li>
 </ul>
+
+<div
+  class="nothing-here-message no-matches"
+  *ngIf="activeFilter !== availableFilterModes.All && !filteredTodos.length"
+>
+  There are no <span class="empty-filter-mode"> {{ activeFilter }} </span>tasks
+</div>
+
+<div
+  class="nothing-here-message no-matches"
+  *ngIf="activeFilter === availableFilterModes.All && !allTodos.length"
+>
+  Start by writing something and hitting enter!
+</div>

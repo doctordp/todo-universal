@@ -3,7 +3,11 @@ import * as todosState from './todos.reducer';
 
 export const todosSelector = createFeatureSelector<todosState.ITodosState>('todos');
 
-export const allTodos = createSelector(
+export const allTodos = createSelector(todosSelector, todosState.todos);
+
+export const selectAllTodos = createSelector(todosSelector, (todosState) => todosState.todos);
+
+export const selectFilterMode = createSelector(
   todosSelector,
-  todosState.todos,
+  (todosState) => todosState.filterMode
 );

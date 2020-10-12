@@ -1,8 +1,14 @@
 <main class="todoapp">
   <header class="header">
     <h1>todos</h1>
-    <form enctype="application/x-www-form-urlencoded" role="form" novalidate>
-      <input class="new-todo" placeholder="What needs to be done" autofocus>
+    <form [formGroup]="addTodoForm">
+      <input
+        formControlName="taskContent"
+        (keyup)="todoInputKeyUp($event)"
+        class="new-todo"
+        placeholder="What needs to be done"
+        autofocus
+      />
     </form>
   </header>
   <section class="main">
@@ -10,19 +16,37 @@
     <app-todos-list></app-todos-list>
   </section>
   <footer class="footer">
-    <span class="todo-count"></span>
+    <span class="todo-count">{{ (todoItemsLeft$ | async) || 0 }} items left</span>
     <ul class="filters">
-      <li>
-        <a href="#" class="selected">All</a>
+      <li (click)="setFilterMode(availableFilterModes.All)">
+        <a
+          href="#"
+          [ngClass]="{
+            selected: (selectedFilterMode$ | async) === availableFilterModes.All
+          }"
+          >All</a
+        >
       </li>
-      <li>
-        <a href="#">Active</a>
+      <li (click)="setFilterMode(availableFilterModes.Active)">
+        <a
+          [ngClass]="{
+            selected: (selectedFilterMode$ | async) === availableFilterModes.Active
+          }"
+          href="#"
+          >Active</a
+        >
       </li>
-      <li>
-        <a href="#" >Completed</a>
+      <li (click)="setFilterMode(availableFilterModes.Completed)">
+        <a
+          [ngClass]="{
+            selected: (selectedFilterMode$ | async) === availableFilterModes.Completed
+          }"
+          href="#"
+          >Completed</a
+        >
       </li>
     </ul>
-    <button class="clear-completed">Clear completed</button>
+    <button (click)="clearAllCompletedTasks()" class="clear-completed">Clear completed</button>
   </footer>
 </main>
 <footer class="info">
