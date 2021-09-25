@@ -1,0 +1,10 @@
+.lang-button {
+  background-color: #fcba03;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: bold;
+  border: 0.2rem solid #47031c;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}

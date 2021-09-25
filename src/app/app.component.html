@@ -6,7 +6,7 @@
         formControlName="taskContent"
         (keyup)="todoInputKeyUp($event)"
         class="new-todo"
-        placeholder="What needs to be done"
+        placeholder="{{ 'todos_title' | transloco }}"
         autofocus
       />
     </form>
@@ -16,7 +16,9 @@
     <app-todos-list></app-todos-list>
   </section>
   <footer class="footer">
-    <span class="todo-count">{{ (todoItemsLeft$ | async) || 0 }} items left</span>
+    <span class="todo-count"
+      >{{ (todoItemsLeft$ | async) || 0 }} {{ 'items_left' | transloco }}</span
+    >
     <ul class="filters">
       <li (click)="setFilterMode(availableFilterModes.All)">
         <a
@@ -24,7 +26,7 @@
           [ngClass]="{
             selected: (selectedFilterMode$ | async) === availableFilterModes.All
           }"
-          >All</a
+          >{{ 'all' | transloco }}</a
         >
       </li>
       <li (click)="setFilterMode(availableFilterModes.Active)">
@@ -33,7 +35,7 @@
             selected: (selectedFilterMode$ | async) === availableFilterModes.Active
           }"
           href="#"
-          >Active</a
+          >{{ 'active' | transloco }}</a
         >
       </li>
       <li (click)="setFilterMode(availableFilterModes.Completed)">
@@ -42,13 +44,16 @@
             selected: (selectedFilterMode$ | async) === availableFilterModes.Completed
           }"
           href="#"
-          >Completed</a
+          >{{ 'completed' | transloco }}</a
         >
       </li>
     </ul>
-    <button (click)="clearAllCompletedTasks()" class="clear-completed">Clear completed</button>
+    <button (click)="clearAllCompletedTasks()" class="clear-completed">
+      {{ 'clear_completed' | transloco }}
+    </button>
   </footer>
 </main>
-<footer class="info">
-  <p>Double-click to edit a todo</p>
-</footer>
+
+<button class="lang-button" (click)="changeLang()">
+  {{ 'change_to' | transloco }} {{ actualLang === 'en' ? 'Spanish' : 'Inglés' }}
+</button>

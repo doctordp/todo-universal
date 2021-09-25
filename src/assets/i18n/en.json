@@ -1,0 +1,14 @@
+{
+  "todos_title": "What needs to be done?",
+  "items_left": "items left",
+  "clear_completed": "Clear completed",
+  "completed": "Completed",
+  "active": "Active",
+  "all": "All",
+  "how_to_start": "Start by writing something and hitting enter!",
+  "no_tasks": {
+    "Active": "There are no Active tasks",
+    "Completed": "There are no Completed tasks"
+  },
+  "change_to": "Change to"
+}

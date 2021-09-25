@@ -35,12 +35,12 @@
   class="nothing-here-message no-matches"
   *ngIf="activeFilter !== availableFilterModes.All && !filteredTodos.length"
 >
-  There are no <span class="empty-filter-mode"> {{ activeFilter }} </span>tasks
+  {{ 'no_tasks.' + activeFilter | transloco }}
 </div>
 
 <div
   class="nothing-here-message no-matches"
   *ngIf="activeFilter === availableFilterModes.All && !allTodos.length"
 >
-  Start by writing something and hitting enter!
+  {{ 'how_to_start' | transloco }}
 </div>

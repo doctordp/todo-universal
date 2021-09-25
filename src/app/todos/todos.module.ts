@@ -8,6 +8,7 @@ import { TodosListComponent } from './components/todo-list/todo-list.component';
 import { TodosService } from './services/todos.service';
 import { todosReducer } from './state/todos.reducer';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { TranslocoRootModule } from '../transloco-root.module';
 
 const DECLARATIONS = [CompleteAllComponent, TodosListComponent];
 
@@ -18,7 +19,8 @@ const DECLARATIONS = [CompleteAllComponent, TodosListComponent];
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('todos', todosReducer)
+    StoreModule.forFeature('todos', todosReducer),
+    TranslocoRootModule
   ],
   providers: [TodosService]
 })

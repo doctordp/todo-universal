@@ -1,0 +1,14 @@
+{
+  "todos_title": "¿Qué tienes que hacer?",
+  "items_left": "tareas restantes",
+  "clear_completed": "Eliminar realizadas",
+  "completed": "Realizadas",
+  "active": "Activas",
+  "all": "Todas",
+  "how_to_start": "¡Empieza por escribir algo aquí y pulsar Enter!",
+  "no_tasks": {
+    "Active": "No hay tareas Activas",
+    "Completed": "No hay tareas Realizadas"
+  },
+  "change_to": "Cambiar a"
+}
